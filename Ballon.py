@@ -41,7 +41,7 @@ house = Actor("house")
 house.pos = randint(800, 1600), 460
 
 tree = Actor("tree")
-tree.pos = randint(800, 1600), 450
+tree.pos = randint(800, 2000), 450
 
 bird_up = True
 up = False
@@ -100,21 +100,21 @@ def update():
             house.x = randint(800, 1600)
             score += 1
 
-            if tree.x > 0:
-                tree.x -= 2
-            else:
-                tree.x = randint(800, 1600)
-                score += 1
+        if tree.x > 0:
+            tree.x -= 2
+        else:
+            tree.x = randint(800, 2100)
+            score += 1
 
-            if balloon.top < 0 or balloon.bottom > 560:
-                game_over = True
-                update_high_scores()
+        if balloon.top < 0 or balloon.bottom > 560:
+            game_over = True
+            update_high_scores()
 
-            if balloon.collidepoint(bird.x, bird.y) or \
-                balloon.collidepoint(house.x, house.y) or \
-                balloon.collidepoint(tree.x, tree.y):
-                game_over = True
-                update_high_scores()
+        if balloon.collidepoint(bird.x, bird.y) or \
+            balloon.collidepoint(house.x, house.y) or \
+            balloon.collidepoint(tree.x, tree.y):
+            game_over = True
+            update_high_scores()
 
 
 
